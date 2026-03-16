@@ -1,19 +1,27 @@
-version: '3'
+version: '3.9'
 
 services:
 
   api:
     build: .
     ports:
-      - "8000:8000"
+      - "6969:8000"
     depends_on:
       - redis
+    environment:
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - CELERY_RESULT_BACKEND=redis://redis:6379/0
 
   worker:
     build: .
-    command: celery -A app.tasks worker --loglevel=info
+    command: celery -A app.config.celery_app worker -l info -Q ml_queue -P solo
     depends_on:
       - redis
+    environment:
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - CELERY_RESULT_BACKEND=redis://redis:6379/0
 
   redis:
     image: redis:7
+    ports:
+      - "6379:6379"

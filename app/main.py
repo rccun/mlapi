@@ -5,10 +5,11 @@ from tensorflow.keras.preprocessing import image
 import numpy as np
 from PIL import Image
 import io
-from .tasks import predict_biome
+from .tasks import predict_biome_task
 from .config import celery_app
 from celery.result import AsyncResult
 
+print("TensorFlow version:", tf.__version__)
 
 
 IMG_HEIGHT = 128
@@ -20,7 +21,7 @@ app = FastAPI(title="Minecraft Biome Classifier")
 async def predict_biome(file: UploadFile = File(...)):
     try:
         contents = await file.read()
-        task = predict_biome.delay(contents)
+        task = predict_biome_task.delay(contents)
         return {
             "task_id": task.id,
             "status": "processing"
