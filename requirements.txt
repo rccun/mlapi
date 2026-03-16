@@ -1,0 +1,8 @@
+tensorflow
+fastapi
+uvicorn
+celery
+redis
+pillow
+numpy
+python-multipart
