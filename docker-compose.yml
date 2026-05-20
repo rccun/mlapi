@@ -13,7 +13,7 @@ services:
   api:
     build: .
     ports:
-      - "6969:8000"
+      - "8000:8000"
     depends_on:
       redis:
         condition: service_healthy

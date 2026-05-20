@@ -9,6 +9,8 @@ from fastapi.responses import JSONResponse
 from .config import celery_app
 from .tasks import predict_biome_task
 
+import os
+
 app = FastAPI(title="Minecraft Biome Classifier")
 
 
@@ -54,3 +56,9 @@ def status(task_id: str):
 def delete(task_id: str):
     celery_app.control.revoke(task_id, terminate=True)
     return {"status": "deleted"}
+
+
+if __name__ == "__main__":
+    import uvicorn
+    port = int(os.getenv("PORT", 8080))
+    uvicorn.run(app, host="0.0.0.0", port=port)

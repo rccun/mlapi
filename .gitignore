@@ -1,0 +1,87 @@
+# =====================
+# Python
+# =====================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+dist/
+build/
+
+# =====================
+# Virtual environments
+# =====================
+venv/
+env/
+ENV/
+.venv/
+.pyenv/
+
+# =====================
+# IDE / editors
+# =====================
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# =====================
+# Jupyter
+# =====================
+.ipynb_checkpoints/
+
+# =====================
+# Logs
+# =====================
+*.log
+logs/
+
+# =====================
+# Environment variables
+# =====================
+.env
+.env.*
+!.env.example
+
+# =====================
+# ML / data artifacts
+# =====================
+models/
+checkpoints/
+*.h5
+*.pt
+*.pth
+*.pkl
+*.joblib
+*.onnx
+
+# datasets (очень важно для ML)
+data/
+datasets/
+
+# =====================
+# Testing / coverage
+# =====================
+.pytest_cache/
+.coverage
+htmlcov/
+
+# =====================
+# Docker
+# =====================
+docker-compose.override.yml
+
+# =====================
+# OS files
+# =====================
+.DS_Store
+Thumbs.db
+
+# =====================
+# Cache
+# =====================
+.cache/
+.mypy_cache/
+.ruff_cache/
